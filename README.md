@@ -24,6 +24,7 @@ AstroViz is a modern, high-performance web application for visualizing and analy
 ### Prerequisites
 
 - Python 3.9+
+- Node.js 16+ and npm
 - Git
 - NASA API Key (optional, but recommended for production use)
 
@@ -63,18 +64,41 @@ AstroViz is a modern, high-performance web application for visualizing and analy
 
 ### Running the Application
 
-1. **Start the development server**
+1. **Start the Backend Server**
    ```bash
    # From project root
+   cd src
    python -m astroviz.api.main
-   # Or
-   uvicorn astroviz.api.main:app --reload
    ```
 
-2. **Access the application**
+2. **Install Frontend Dependencies**
+   ```bash
+   # From project root
+   cd src/frontend
+   npm install
+   ```
+
+3. **Start the Frontend Development Server**
+   ```bash
+   # From src/frontend directory
+   npm run dev
+   ```
+
+4. **Access the Application**
+   - Frontend Visualization: http://localhost:5173
    - API Documentation: http://localhost:8000/docs
    - Alternative docs: http://localhost:8000/redoc
    - Health check: http://localhost:8000/health
+
+5. **Using the 3D Visualization**
+   - Left-click and drag to rotate the view
+   - Right-click and drag to pan
+   - Scroll wheel to zoom in/out
+   - The scene shows:
+     - A yellow sun in the center
+     - Gray asteroids in orbit
+     - White orbital paths
+     - Interactive starry background
 
 ## 🧪 Development
 
@@ -154,12 +178,27 @@ astroviz/
 
 ## 🌟 Tech Stack
 
-- **Backend**: FastAPI, Pydantic, httpx
-- **Data Processing**: pandas, numpy
-- **Visualization**: Plotly, Three.js (frontend)
-- **Testing**: pytest, pytest-cov, pytest-asyncio
-- **Code Quality**: ruff, mypy, black, pre-commit
-- **Documentation**: Sphinx, sphinx-rtd-theme
+- **Backend**:
+  - FastAPI, Pydantic, httpx
+  - Async request handling
+  - Data validation and serialization
+
+- **Frontend**:
+  - React with TypeScript
+  - Three.js with React Three Fiber
+  - Vite for development and building
+  - Interactive 3D visualization
+
+- **Data Processing**:
+  - pandas, numpy for calculations
+  - Orbital mechanics simulation
+  - Real-time data updates
+
+- **Development Tools**:
+  - pytest, pytest-cov, pytest-asyncio
+  - ruff, mypy, ESLint
+  - pre-commit hooks
+  - Sphinx documentation
 
 ## 🛡️ Data Sources
 
