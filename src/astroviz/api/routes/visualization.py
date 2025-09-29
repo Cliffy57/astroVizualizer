@@ -44,12 +44,14 @@ def generate_sample_asteroid_data(num_asteroids: int = 10) -> list[dict[str, Any
 
         # Create orbit points list with slight randomness for more natural look
         orbit_points = []
-        for x, y, _z_val in zip(x_rot, y_rot, z):
+        for idx in range(len(x_rot)):
             # Add small random variations to make orbits less perfect
             jitter = np.random.uniform(-0.1, 0.1, 3)
-            orbit_points.append(
-                [float(x + jitter[0]), float(y + jitter[1]), float(z + jitter[2])]
-            )
+            orbit_points.append([
+                float(x_rot[idx] + jitter[0]),
+                float(y_rot[idx] + jitter[1]),
+                float(z[idx] + jitter[2])
+            ])
 
         # Randomize asteroid properties
         size = np.random.uniform(0.1, 0.4)  # Smaller asteroids for better scale
